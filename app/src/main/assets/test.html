@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+
+  function sendHelloToAndroid() {
+      if(window.android!=null&&typeof(window.android)!="undefined"){
+        window.android.callAndroid("你好，Android! ");
+      }else{
+         prompt("你好，Android!  ");
+      }
+  }
+
+  function callByAndroidMoreParams(msg){
+     
+    showElement("Js收到消息-->方法callByAndroidMoreParam被调用 , 参数:"+msg);
+     return "ok";
+  }
+
+  function showElement(msg){
+      var div   =document.getElementById("show"); 
+      div.innerText=msg;  
+  }
+
+  window.onload=function(){
+      //页面加载完显示源代码
+      showElement(document.getElementsByTagName("html")[0].innerHTML);
+    };
+
+</script>
+</head>
+<body style="width: 100%;height: 100%;padding: 0px;overflow:none">
+<button id="btn_js_call_java" type="button" style="width: 100%,height:40px;text-align: center;" onclick="sendHelloToAndroid()">js 调用 Native</button>
+<div  id="div_box" style="width: 100%;height: 100%;position: absolute;background: #000000;overflow: scroll;margin: 0px;padding: 20px">
+<span id="show"; style="color: #FFFFFF;size: 14px"></span>
+</div>
+</body>
+</html>
